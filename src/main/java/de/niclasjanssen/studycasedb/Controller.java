@@ -32,6 +32,18 @@ public class Controller {
 		return d;
 	}
 	
+	@GetMapping(value = "/api/v1/distance/FV/{ds1}/{ds2}")
+	public Distance getFVDistance(@PathVariable String ds1, @PathVariable String ds2) {
+
+		if (stationRepo.getReferenceById(ds1).getVerkehr().equals("FV") && stationRepo.getReferenceById(ds2).getVerkehr().equals("FV")) {
+			return getDistance(ds1,ds2);
+		}
+		Distance d = new Distance();
+		d.setFrom("Not both Stations");
+		d.setTo("are included in FV");		
+		return d;
+	}
+	
 	@PostMapping(value = "/api/v1/station")
 	public String saveStation(@RequestBody Station station) {
 		stationRepo.save(station);
