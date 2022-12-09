@@ -49,5 +49,9 @@ public class Station {
 	public void setBreite(double breite) {
 		this.breite = breite;
 	}
+	public String toString() {
+		return "DS100: " + ds100 + "\n" + "Name: " + name + "\n" + "Längengrad: " + laenge +"\n" + "Breitengrad: " + breite + "\n" + "Verkehr: " + verkehr;
+		
+	}
 
 }
